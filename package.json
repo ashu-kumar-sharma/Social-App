@@ -3,8 +3,12 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon index.js"
+    "client-install": "npm install --prefix client",
+    "start": "node server.js",
+    "server": "nodemon server.js",
+    "client": "npm start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
   },
   "author": "",
   "license": "ISC",
@@ -12,6 +16,7 @@
   "dependencies": {
     "body-parser": "^1.19.0",
     "cloudinary": "^1.14.0",
+    "concurrently": "^5.0.2",
     "cookie-parser": "^1.4.4",
     "cookie-session": "^1.3.3",
     "cors": "^2.8.5",
