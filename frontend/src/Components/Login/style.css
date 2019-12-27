@@ -1,0 +1,23 @@
+.background{
+    background: linear-gradient(rgba(0,0,0,0.7637429971988796),rgba(0,0,0,0.5060399159663865)), url("../../assets/LoginPageBackground.jpg") no-repeat center;    background-size: cover;
+    height: 100vh;
+    position: fixed;
+    top: 0; bottom: 0; left: 0; right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.login-card{
+    background: white;
+    z-index: 50;
+    box-shadow: 5px 5px 5px gray;
+    width: 30%;
+    height: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+span{
+    padding-left: 10px;
+}

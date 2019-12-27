@@ -1,0 +1,10 @@
+.nav-link{
+    border: 2px solid;
+    margin-left: 25px;
+    /*width: 100%;*/
+}
+.footer{
+    display: flex;
+    justify-content: space-between;
+    padding: 5px;
+}
