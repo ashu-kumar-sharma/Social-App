@@ -5,9 +5,10 @@ const mailer = require('../utils/mailer');
 const validatePostInput = require('../validation/postValidation');
 
 
-const assign= (dept)=> {
-    return User.find({role: dept});
+const assign= (obj)=> {
+    return User.find(obj);
 };
+
 
 
 module.exports = {
@@ -17,21 +18,23 @@ module.exports = {
                 folder: "TTNBUZZ/Complaints/",
             });
         }
-        let assigned = assign(req.body.department);
+        let assigned = assign({'role':req.body.department});
+        var item;
         try {
             let newAssign = await assigned;
-            var item = newAssign[Math.floor(Math.random() * newAssign.length)];
+            if(newAssign.length==0){
+                newAssign= await assign({'role':'SuperAdmin'})
+            }
+            item = newAssign[Math.floor(Math.random() * newAssign.length)];
         }
         catch (err) {
             console.log(err)
         }
         if(!validatePostInput(req.body)){
-            console.log("hererer failed");
             res.send({status : 'failed', error : err});
         }
         User.findOne({_id: req.user_id})
             .then((response)=>{
-                console.log("jhjhk",req.body);
                 const newComplain = new Complain({
                     status: 'Open',
                     title: req.body.title,
@@ -45,17 +48,13 @@ module.exports = {
                     assigned_to: item.username,
                     assigned_email: item.email,
                 })
-                console.log("aa",newComplain);
                 newComplain.save()
                     .then((result)=>{
-                        // 
-                        console.log("!failed");
+                        
                         res.send(result);
                     })
                     .catch((err)=>{
-                        console.log("failed");
-
-                    res.send({status : '!failed', error : err});
+                        res.send({status : '!failed', error : err});
                     })
             })
             .catch((err)=>{

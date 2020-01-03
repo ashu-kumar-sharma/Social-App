@@ -1,5 +1,5 @@
 const nodemailer = require('nodemailer');
-const nodemailerConst = require('../constants/constant');
+const nodemailerConst = require('../constants/constant.js');
 
 module.exports={
     mailer: (result,mails,subject,body,title)=>{
@@ -7,13 +7,13 @@ module.exports={
         let transporter = nodemailer.createTransport({
             service: 'gmail',
             auth: {
-                user: nodemailerConst.nodemailerConst.user,
-                pass: nodemailerConst.nodemailerConst.password
+                user: process.env.NODEMAILER_USER,
+                pass: process.env.NODEMAILER_PASSWORD
             }
         });
         mails.map((item,id)=>{
             let mailOptions = {
-                from: 'ttnbuzz@tothenew.com', // sender address
+                from: process.env.NODEMAILER_USER, // sender address
                 to: item, // list of receivers
                 subject: subject[id], // Subject line
                 text: body[id], // plain text body

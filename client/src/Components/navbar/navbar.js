@@ -12,8 +12,8 @@ export default class Navbar extends Component{
             <nav className="navbar navbar-inverse bg-dark fixed-top">
                     <div className="navbar-header">
                         <NavLink to={'/buzz'} className="navlinks d-flex">
-                            <img src={'https://i.ibb.co/QJ2fVX0/logo-1.png'} alt={'brand-logo'} width={'50px'} height={'40px'}/>
-                            <h4>TT</h4>
+                            <img src={'https://i.ibb.co/wLPRYJc/logo.png'} alt={'brand-logo'} width={'60px'} height={'40px'}/>
+                            <h4>Social Buzz</h4>
                         </NavLink>
                     </div>
                     <ul className="nav navbar-nav">

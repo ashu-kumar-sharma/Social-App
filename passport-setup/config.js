@@ -1,7 +1,7 @@
 const passport = require('passport');
 const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 const User = require('../models/user');
-const google = require('../constants/constant');
+const google = require('../constants/constant.js');
 
 //serialize user function
 passport.serializeUser((user,done)=>{
@@ -14,11 +14,12 @@ passport.deserializeUser((id,done)=>{
 });
 
 
+
 passport.use(
     new GoogleStrategy({
         // options for google strategy
-        clientID: process.env.CLIENTID || google.google.clientID,
-        clientSecret: google.google.clientSecret,
+        clientID: process.env.GOOGLE_CLIENT_ID,
+        clientSecret: process.env.GOOGLE_CLIENT_SECRET,
         callbackURL: '/login/google/redirect'
     }, (accessToken, refreshToken, profile, done) => {
         // passport callback function
@@ -29,7 +30,24 @@ passport.use(
             }
             else
             {
-                if(true)
+                if(profile.emails[0].value==='ashukumar2001@gmail.com')
+                {
+
+                    //creating new admin type user in local database
+                    new User ({
+                        username: profile.displayName,
+                        email: profile.emails[0].value,
+                        p_image: profile._json['picture'],
+                        role: 'SuperAdmin'
+                    }).save()
+                        .then((response)=>{
+                        done(null,response);
+                        })
+                        .catch((err)=>{
+                            console.log("error in saving data",err);
+                        })
+                }
+                else if(true)
                 {
                     //creating new user type user in local database
                     new User ({
@@ -43,22 +61,6 @@ passport.use(
                         })
                         .catch((err)=>{
                             console.log('error in saving data',err);
-                        })
-                }
-                else if(profile.emails[0].value==='ashukumar2001@gmail.com')
-                {
-                    //creating new admin type user in local database
-                    new User ({
-                        username: profile.displayName,
-                        email: profile.emails[0].value,
-                        p_image: profile._json['picture'],
-                        role: 'SuperAdmin'
-                    }).save()
-                        .then((response)=>{
-                        done(null,response);
-                        })
-                        .catch((err)=>{
-                            console.log("error in saving data",err);
                         })
                 }
                 else {

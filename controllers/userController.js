@@ -1,6 +1,6 @@
 const User = require('../models/user');
 const nodemailer = require('nodemailer');
-const nodemailerConst = require('../constants/constant');
+const nodemailerConst = require('../constants/constant.js');
 
 module.exports ={
     fetchUser:(req,res)=>{

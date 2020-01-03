@@ -1,7 +1,7 @@
 const Post = require('../models/post');
 const jwt = require('jsonwebtoken');
-const JWT_SECRET = require('../constants/constant');
-const frontendUrl = require('../constants/constant');
+const JWT_SECRET = require('../constants/constant.js');
+const frontendUrl = require('../constants/constant.js');
 
 module.exports = {
     googleRedirect: (req,res)=>{
@@ -10,10 +10,10 @@ module.exports = {
                 let userID = req.user._doc._id.toJSON();
                 token = jwt.sign(userID, JWT_SECRET.jwtSecret.secret);
                 res.cookie("token",token);
-                res.redirect(frontendUrl.frontendUrl.url);
+                res.redirect(process.env.FRONTENDURL);
             }
             else{
-                res.redirect(`http://localhost:3000/buzz`);
+                res.redirect(process.env.FRONTENDURL);
             }
         }
         catch (e) {

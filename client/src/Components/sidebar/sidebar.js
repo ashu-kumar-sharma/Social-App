@@ -33,8 +33,8 @@ export default class Sidebar extends Component {
                     }
                 </ul>
                 <div className={'footer'}>
-                    <p>&copy;2019 TT</p>
-                    <a href={`http://www.tothenew.com/about-us`} >About Us</a>
+                    <p>&copy;2019 Social Buzz</p>
+                    <a>About Us</a>
                 </div>
             </Fragment>
         );
