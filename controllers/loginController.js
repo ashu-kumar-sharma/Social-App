@@ -10,6 +10,7 @@ module.exports = {
                 let userID = req.user._doc._id.toJSON();
                 token = jwt.sign(userID, process.env.JWTSECRET);
                 res.cookie("token",token);
+                console.log('heerererer');
                 res.redirect(process.env.FRONTENDURL);
             }
             else{
