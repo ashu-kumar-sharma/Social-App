@@ -1,5 +1,5 @@
 const nodemailer = require('nodemailer');
-const nodemailerConst = require('../constants/constant.js');
+// const nodemailerConst = require('../constants/constant.js');
 
 module.exports={
     mailer: (result,mails,subject,body,title)=>{

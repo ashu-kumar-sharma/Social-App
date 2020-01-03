@@ -1,5 +1,5 @@
 const cloudinary = require('cloudinary');
-const cloudinaryConfig = require('../constants/constant/cloudinaryConfig');
+// const cloudinaryConfig = require('../constants/constant/cloudinaryConfig');
 
 cloudinary.config({
     cloud_name: process.env.CLOUDINARY_NAME,
