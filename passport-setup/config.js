@@ -20,12 +20,13 @@ passport.use(
         // options for google strategy
         clientID: process.env.GOOGLE_CLIENT_ID,
         clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-        callbackURL: 'https://ttn-buz.herokuapp.com/login/google/redirect'
+        callbackURL: '/login/google/redirect'
     }, (accessToken, refreshToken, profile, done) => {
         // passport callback function
         User.findOne({email: profile.emails[0].value}).then((res,err) =>{
             if(res)  //checking if user data is already in data base
             {
+                console.log('aaa111');
                 done(null,{...res, success: true});
             }
             else
