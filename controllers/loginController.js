@@ -6,6 +6,7 @@ const jwt = require('jsonwebtoken');
 module.exports = {
     googleRedirect: (req,res)=>{
         try {
+            console.log('heerererer');
             if(req && req.user && req.user.success){
                 let userID = req.user._doc._id.toJSON();
                 token = jwt.sign(userID, process.env.JWTSECRET);
