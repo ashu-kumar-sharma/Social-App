@@ -1,7 +1,7 @@
 const Post = require('../models/post');
 const jwt = require('jsonwebtoken');
-const JWT_SECRET = require('../constants/constant.js');
-const frontendUrl = require('../constants/constant.js');
+// const JWT_SECRET = require('../constants/constant.js');
+// const frontendUrl = require('../constants/constant.js');
 
 module.exports = {
         googleRedirect: (req,res)=>{
@@ -9,19 +9,20 @@ module.exports = {
             console.log('heerererer');
             if(req && req.user && req.user.success){
                 let userID = req.user._doc._id.toJSON();
-                token = jwt.sign(userID, JWT_SECRET.jwtSecret.secret);
+                token = jwt.sign(userID, process.env.JWTSECRET);
                 res.cookie("token",token);
                 console.log('heerererer');
-                res.redirect(frontendUrl.frontendUrl.url);
-                // res.redirect(process.env.FRONTENDURL);
+                res.redirect(`https://ttn-buz.herokuapp.com`);
             }
             else{
-                res.redirect(process.env.FRONTENDURL);
+                // res.redirect(process.env.FRONTENDURL);
+                res.redirect(`https://ttn-buz.herokuapp.com`);
+
             }
         }
         catch (e) {
             // res.send({status : false, error : e});
-            res.redirect('ttn-bux.heroku.com')
+            res.redirect('/ttn-bux.heroku.com')
         }
 
 
