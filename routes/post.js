@@ -14,7 +14,7 @@ route.post('/savePost/',verifyToken,upload.single('image'),postController.savePo
 route.get('/fetchPost/?:skip',verifyToken,postController.fetchPost);
 
 // route for getting notification
-route.get('/getNotification',verifyToken,postController.fetchNotification);
+route.get('/getNotification',postController.fetchNotification);
 
 // route for deleting post
 route.delete(`/removePost/?:id`,verifyToken,postController.deletePost);
