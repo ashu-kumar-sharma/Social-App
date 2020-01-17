@@ -11,12 +11,13 @@ module.exports = {
                 let userID = req.user._doc._id.toJSON();
                 token = jwt.sign(userID, process.env.JWTSECRET);
                 res.cookie("token",token);
-                console.log('heerererer');
-                res.redirect(`https://ttn-buz.herokuapp.com`);
+                console.log('heerererer',process.env.FRONTENDURL);
+                res.redirect(process.env.FRONTENDURL);
+                
             }
             else{
-                // res.redirect(process.env.FRONTENDURL);
-                res.redirect(`https://ttn-buz.herokuapp.com`);
+                res.redirect(process.env.FRONTENDURL);
+                // res.redirect(`https://ttn-buz.herokuapp.com`);
 
             }
         }

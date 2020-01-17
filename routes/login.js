@@ -7,7 +7,8 @@ const googleRedirect = require('../controllers/loginController');
 
 //auth for google
 route.get('/google',passport.authenticate('google',{
-    scope:['profile','email']
+    scope:['profile','email'],
+    session: false
 }));
 
 //callback route for google to redirect
