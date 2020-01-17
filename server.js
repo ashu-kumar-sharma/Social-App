@@ -18,7 +18,6 @@ const path = require('path');
 
 const PORT = process.env.PORT || 8000;
 // app.delete('/notes/:noteId', notes.delete);
-console.log(process.env.GOOGLE_CLIENT_ID);
 const app = express();
 app.use(cookieParser());
 // creating cookie session

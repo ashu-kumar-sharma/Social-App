@@ -4,7 +4,7 @@ const jwt = require('jsonwebtoken');
 // const frontendUrl = require('../constants/constant.js');
 
 module.exports = {
-    googleRedirect: (req,res)=>{
+        googleRedirect: (req,res)=>{
         try {
             console.log('heerererer');
             if(req && req.user && req.user.success){
@@ -19,7 +19,8 @@ module.exports = {
             }
         }
         catch (e) {
-            res.send({status : false, error : e});
+            // res.send({status : false, error : e});
+            res.redirect('ttn-bux.heroku.com')
         }
 
 

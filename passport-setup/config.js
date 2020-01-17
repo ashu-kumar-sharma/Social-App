@@ -24,6 +24,7 @@ passport.use(
         proxy: true 
     }, (accessToken, refreshToken, profile, done) => {
         // passport callback function
+        console.log('aaa');
         User.findOne({email: profile.emails[0].value}).then((res,err) =>{
             if(res)  //checking if user data is already in data base
             {
