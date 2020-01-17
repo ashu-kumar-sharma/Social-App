@@ -9,7 +9,7 @@ passport.serializeUser((user,done)=>{
 });
 
 //deserialize user function
-passport.deserializeUser((id,done)=>{
+passport.deserializeUser((id,do ne)=>{
     done(null, id)
 });
 
