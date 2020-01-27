@@ -22,8 +22,8 @@ module.exports = {
             }
         }
         catch (e) {
-            // res.send({status : false, error : e});
-            res.redirect('/ttn-bux.heroku.com')
+            res.send({status : false, error : e});
+            // res.redirect('/ttn-bux.heroku.com')
         }
 
 
