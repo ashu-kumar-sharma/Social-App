@@ -15,11 +15,11 @@ class App extends Component {
     }
 
     componentWillMount() {
-        this.checkAuth();
-        if (this.state.isAuth) {
-            console.log("hererererer")
+        // this.checkAuth();
+        // if (this.state.isAuth) {
+        //     console.log("hererererer")
             this.props.history.push('/buzz');
-        }
+        // }
     }
 
     checkAuth = () => {
