@@ -58,6 +58,7 @@ module.exports = {
     },
 
     fetchNotification: (req,res)=>{
+        console.log('hehehehehehe');
         Post.find().sort( { date: -1 } ).limit(5)
             .then((response,err)=>{
                 if(!response){
