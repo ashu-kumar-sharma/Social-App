@@ -20,7 +20,7 @@ passport.use(
         // options for google strategy
         clientID: process.env.GOOGLE_CLIENT_ID,
         clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-        callbackURL: '/login/google/redirect',
+        callbackURL: 'https://ttn-buz.herokuapp.com/login/google/redirect',
         proxy: true 
     }, (accessToken, refreshToken, profile, done) => {
         // passport callback function
