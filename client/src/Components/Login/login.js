@@ -18,7 +18,7 @@ class Login extends Component {
                          alt="" className="loginScreenImage"/>
                          <h1>Socail Buzz</h1>
                     <h5 >Create Your Own Buzz</h5>
-                    <a href={'/login/google'}>
+                    <a href={'http://localhost:8000/login/google'}>
                         <button className={"btn btn-danger"}>
                             <i className='fab fa-google'> </i>
                             <span>Sign in with Gmail</span>
